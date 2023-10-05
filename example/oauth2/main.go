@@ -1,0 +1,27 @@
+package main
+
+import (
+	"context"
+	"log"
+
+	"golang.org/x/oauth2"
+
+	"github.com/qorpress/go-wordpress"
+)
+
+func main() {
+	ctx := context.Background()
+	ts := oauth2.StaticTokenSource(
+		&oauth2.Token{AccessToken: "JWT_TOKEN"},
+	)
+	tc := oauth2.NewClient(ctx, ts)
+
+	client, _ := wordpress.NewClient("http://192.168.99.100:32777/wp-json/", tc)
+
+	// get the currently authenticated users details
+	authenticatedUser, _, err := client.Users.Me(ctx, nil)
+	if err != nil {
+		log.Fatalln(err)
+	}
+	log.Printf("Authenticated user %+v", authenticatedUser)
+}
