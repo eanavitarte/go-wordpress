@@ -33,11 +33,7 @@ type Type struct {
 }
 
 // Types represents the assigned types for each item type.
-type Types struct {
-	Post       Type `json:"post,omitempty"`
-	Page       Type `json:"page,omitempty"`
-	Attachment Type `json:"attachment,omitempty"`
-}
+type Types map[string]Type
 
 // TypesService provides access to the Type related functions in the WordPress REST API.
 type TypesService service

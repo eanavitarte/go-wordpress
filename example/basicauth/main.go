@@ -9,7 +9,7 @@ import (
 	"github.com/k0kubun/pp"
 	"github.com/spf13/pflag"
 
-	"github.com/qorpress/go-wordpress"
+	"github.com/eanavitarte/go-wordpress"
 )
 
 var (
